@@ -4,7 +4,7 @@ This is the main data pipeline for the ACEmulator Data Platform (ACDP). Aside fr
 assumption that your ACEmulator MySQL server is running locally on port 3306, with
 a Debezium user already created and authorized as necessary (see below), the rest of
 the configuration is currently in `docker-compose.yml` and the ksqlDB migrations in
-`ksqldb-acdp`.
+`ksqldb`.
 
 ## Setup
 
@@ -38,7 +38,7 @@ source connector. Follow the instructions in the
 ### MySQL Hostname
 
 I am using [Colima](https://github.com/abiosoft/colima). Because I'm runnng the MySQL database for ACE natively,
-and the rest of this stack in Docker, a special hostname is used in `ksqldb-acdp/migrations/V000001__create_debezium_connector.sql`
+and the rest of this stack in Docker, a special hostname is used in `ksqldb/migrations/V000001__create_debezium_connector.sql`
 for connecting to the MySQL database: `host.lima.internal`. If you are using a different setup, this might be
 different for you. I believe the correct hostname if you're using a similar setup but with Docker Desktop is
 `host.docker.internal`.
@@ -54,11 +54,11 @@ docker compose up -d
 After `ksqldb-server` is ready, initialize the `ksql-migrations` tool:
 
 ```sh
-ksql-migrations initialize-metadata -c ksqldb-acdp/ksql-migrations.properties
+ksql-migrations initialize-metadata -c ksqldb/ksql-migrations.properties
 ```
 
 And then apply the migrations:
 
 ```sh
-ksql-migrations apply -a -c ksqldb-acdp/ksql-migrations.properties
+ksql-migrations apply -a -c ksqldb/ksql-migrations.properties
 ```
