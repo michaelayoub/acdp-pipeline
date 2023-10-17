@@ -1,0 +1,5 @@
+notes_and_old_stuff
+debezium-connector-mysql/*
+!debezium-connector-mysql/.gitkeep
+ksqldb-extensions/*
+!ksqldb-extensions/.gitkeep
