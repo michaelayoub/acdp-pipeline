@@ -1,7 +1,7 @@
 SET 'auto.offset.reset' = 'earliest';
 
 CREATE TABLE shard_character_enriched AS
-       SELECT sc.object_id,
+       SELECT sc.object_id AS object_id,
               ac.attribute_details_list,
               sec.enriched_skill_details_list,
               a2c.enriched_attribute_2nd_details_list
